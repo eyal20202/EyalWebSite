@@ -18,6 +18,11 @@ pnpm-debug.log*
 .env
 .env.production
 .env.local
+.env.*.local
+
+# server
+server/node_modules/
+server/dist/
 
 # macOS-specific files
 .DS_Store
