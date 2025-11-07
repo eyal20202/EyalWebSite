@@ -1,0 +1,105 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import AvatarWithAI from '@components/Avatar/AvatarWithAI';
+import MeetingScheduler from '@components/Forms/MeetingScheduler';
+---
+
+<BaseLayout title="צור קשר" description="קביעת פגישה עם אייל מזרחי">
+  <AvatarWithAI client:load size="small" floating={true} context={{ page: 'contact' }} />
+
+  <main class="min-h-screen py-12">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-[1.1fr,0.9fr] gap-10">
+        <section class="space-y-6">
+          <h1 class="text-4xl md:text-5xl font-bold text-white">בואו נדבר</h1>
+          <p class="text-lg text-gray-300 leading-relaxed">
+            מפתח Full Stack עם ניסיון בפיתוח Backend, מיקרו-שירותים, ו-DevOps. 
+            ספרו לי על הפרויקט או הצורך שלכם ונקבע שיחה קצרה להיכרות.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card">
+              <h2 class="text-xl font-semibold mb-4 text-white">פרטי קשר</h2>
+              <ul class="space-y-3 text-sm">
+                <li class="flex items-center gap-3">
+                  <span class="text-gray-400 font-medium min-w-[80px]">טלפון:</span>
+                  <a href="tel:+972526479304" class="text-primary-300 hover:text-primary-200 transition-colors">
+                    052-6479304
+                  </a>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="text-gray-400 font-medium min-w-[80px]">מייל:</span>
+                  <a href="mailto:eyal20202@gmail.com" class="text-primary-300 hover:text-primary-200 transition-colors">
+                    eyal20202@gmail.com
+                  </a>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="text-gray-400 font-medium min-w-[80px]">LinkedIn:</span>
+                  <a
+                    href="https://www.linkedin.com/in/eyal-mizrahi-full-stack/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary-300 hover:text-primary-200 transition-colors"
+                  >
+                    /in/eyal-mizrahi-full-stack
+                  </a>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="text-gray-400 font-medium min-w-[80px]">GitHub:</span>
+                  <a
+                    href="https://github.com/eyal20202"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary-300 hover:text-primary-200 transition-colors"
+                  >
+                    github.com/eyal20202
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h2 class="text-xl font-semibold mb-4 text-white">איך אוכל לעזור</h2>
+              <ul class="space-y-3 text-sm text-gray-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">→</span>
+                  <span>פיתוח Backend ב-Java / Node.js</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">→</span>
+                  <span>פיתוח Full Stack עם React</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">→</span>
+                  <span>עבודה עם מיקרו-שירותים ו-CI/CD</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">→</span>
+                  <span>שיתוף ידע וטיפים טכניים</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card bg-gradient-to-br from-primary-500/10 to-brand-500/10 border-primary-400/30">
+            <h2 class="text-xl font-semibold mb-3 text-white">זמינות</h2>
+            <p class="text-sm text-gray-300 leading-relaxed">
+              בימים א׳-ה׳ בין 09:00 ל-19:00 (שעון ישראל). פגישות בזום או Google Meet. אם מדובר בשיתוף פעולה דחוף, נא לציין זאת.
+            </p>
+          </div>
+        </section>
+
+        <aside>
+          <MeetingScheduler client:load />
+
+          <div class="mt-6 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+            <p class="font-medium text-gray-700 dark:text-gray-200">אבטחה ופרטיות</p>
+            <p>
+              פרטי האימות נשמרים באופן זמני לצורך קביעת הפגישה בלבד ומחוקים לאחר השלמת התהליך. לבקשות מיוחדות ניתן לפנות ישירות במייל.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

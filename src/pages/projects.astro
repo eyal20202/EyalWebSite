@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ProjectsList from '@components/Projects/ProjectsList';
+import AvatarWithAI from '@components/Avatar/AvatarWithAI';
+
+// ניתן לעדכן את שם המשתמש דרך ENV או ישירות כאן
+const githubUsername = import.meta.env.PUBLIC_GITHUB_USERNAME ?? 'eyal20202';
+---
+
+<BaseLayout title="פרויקטים" description="פרויקטים וקוד פתוח">
+  <AvatarWithAI client:load size="small" floating={true} context={{ page: 'projects' }} />
+
+  <main class="min-h-screen py-12">
+    <div class="container-custom">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">פרויקטים</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400 mb-12">
+        פרויקטים מעניינים שעליהם עבדתי
+      </p>
+
+      <ProjectsList client:load username={githubUsername} />
+    </div>
+  </main>
+</BaseLayout>
+

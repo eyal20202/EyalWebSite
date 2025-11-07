@@ -1,0 +1,247 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description = 'אתר אישי מתקדם - פורטפוליו, בלוג ומשחקים', image } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    {image && <meta property="twitter:image" content={new URL(image, Astro.site)} />}
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/10 shadow-lg">
+      <nav class="container-custom py-4">
+        <div class="flex items-center justify-between">
+          <a href="/" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-primary-500 to-brand-500 flex items-center justify-center shadow-lg shadow-primary-500/30 group-hover:scale-110 transition-transform">
+              <span class="text-white font-bold text-lg">א</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xl font-bold text-white group-hover:text-primary-300 transition-colors">אייל מזרחי</span>
+              <span class="text-xs text-gray-400">Full Stack Developer</span>
+            </div>
+          </a>
+          <div class="hidden md:flex items-center gap-2">
+            <a href="/" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all relative group">
+              <span class="relative z-10">דף הבית</span>
+              <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-primary-500/20 to-brand-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+            </a>
+            <a href="/blog" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all relative group">
+              <span class="relative z-10">בלוג</span>
+              <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-primary-500/20 to-brand-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+            </a>
+            <a href="/projects" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all relative group">
+              <span class="relative z-10">פרויקטים</span>
+              <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-primary-500/20 to-brand-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+            </a>
+            <a href="/games" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all relative group">
+              <span class="relative z-10">משחקים</span>
+              <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-primary-500/20 to-brand-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+            </a>
+            <a href="/contact" class="px-4 py-2 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-primary-500 to-brand-500 hover:shadow-lg hover:shadow-primary-500/50 transition-all">
+              צור קשר
+            </a>
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="theme-toggle" class="p-2.5 rounded-xl hover:bg-white/5 text-gray-400 hover:text-white transition-all" aria-label="החלף מצב כהה/בהיר">
+              <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            </button>
+            <select id="lang-select" class="px-3 py-2 rounded-xl text-sm bg-white/5 border border-white/10 text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500/50 transition-all">
+              <option value="he" class="bg-neutral-900">עברית</option>
+              <option value="en" class="bg-neutral-900">English</option>
+            </select>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="relative mt-20 border-t border-white/10">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary-500/5 to-transparent"></div>
+      <div class="container-custom py-16 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div class="md:col-span-2">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-primary-500 to-brand-500 flex items-center justify-center shadow-lg shadow-primary-500/30">
+                <span class="text-white font-bold text-xl">א</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white">אייל מזרחי</h3>
+                <p class="text-sm text-gray-400">Full Stack Developer</p>
+              </div>
+            </div>
+              <p class="text-gray-300 leading-relaxed max-w-md">
+              Mid-Senior Full Stack Developer עם ניסיון בפיתוח Backend, מיקרו-שירותים, ו-DevOps. עובד על פרויקטים ארגוניים.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-6 text-white">ניווט מהיר</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="/blog" class="text-gray-400 hover:text-primary-300 transition-colors flex items-center gap-2 group">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  <span>בלוג</span>
+                </a>
+              </li>
+              <li>
+                <a href="/projects" class="text-gray-400 hover:text-primary-300 transition-colors flex items-center gap-2 group">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  <span>פרויקטים</span>
+                </a>
+              </li>
+              <li>
+                <a href="/games" class="text-gray-400 hover:text-primary-300 transition-colors flex items-center gap-2 group">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  <span>משחקים</span>
+                </a>
+              </li>
+              <li>
+                <a href="/contact" class="text-gray-400 hover:text-primary-300 transition-colors flex items-center gap-2 group">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  <span>צור קשר</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-6 text-white">רשתות חברתיות</h3>
+            <div class="flex flex-col gap-4">
+              <a 
+                href="https://github.com/eyal20202" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
+              >
+                <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-primary-500/30 transition-all">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </div>
+                <span>GitHub</span>
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/eyal-mizrahi-full-stack/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
+              >
+                <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-primary-500/30 transition-all">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </div>
+                <span>LinkedIn</span>
+              </a>
+              <a 
+                href="mailto:eyal20202@gmail.com" 
+                class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
+              >
+                <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-primary-500/30 transition-all">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <span>Email</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p class="text-gray-400 text-sm">
+            &copy; {new Date().getFullYear()} אייל מזרחי. כל הזכויות שמורות.
+          </p>
+          <div class="flex items-center gap-6 text-sm text-gray-400">
+            <span>נבנה עם</span>
+            <span class="text-primary-300">Astro</span>
+            <span class="text-gray-600">•</span>
+            <span class="text-primary-300">React</span>
+            <span class="text-gray-600">•</span>
+            <span class="text-primary-300">Tailwind CSS</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Dark mode toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+      
+      // Check for saved theme preference or default to light mode
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      if (currentTheme === 'dark') {
+        html.classList.add('dark');
+      }
+      
+      themeToggle?.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        const theme = html.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+      });
+
+      // Language selector (placeholder for future i18n implementation)
+      const langSelect = document.getElementById('lang-select');
+      const currentLang = localStorage.getItem('lang') || 'he';
+      if (langSelect) {
+        langSelect.value = currentLang;
+        langSelect.addEventListener('change', (e) => {
+          const lang = e.target.value;
+          localStorage.setItem('lang', lang);
+          // Future: implement actual language switching
+          if (lang === 'en') {
+            html.setAttribute('dir', 'ltr');
+            html.setAttribute('lang', 'en');
+          } else {
+            html.setAttribute('dir', 'rtl');
+            html.setAttribute('lang', 'he');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
+

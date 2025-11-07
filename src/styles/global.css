@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-neutral-950 text-gray-100 transition-colors duration-300 antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(14,165,233,0.25), transparent 40%),
+      radial-gradient(circle at 80% 10%, rgba(165,47,255,0.25), transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(14,165,233,0.15), transparent 45%),
+      linear-gradient(180deg, #020617 0%, #0f172a 35%, #020617 100%);
+    background-attachment: fixed;
+  }
+
+  [dir='rtl'] {
+    font-family: 'Heebo', 'Arial Hebrew', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  a {
+    @apply transition-colors duration-200 hover:text-primary-300;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply relative overflow-hidden px-6 py-3 rounded-full font-semibold transition-all duration-300 
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-950 
+           disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wide text-sm;
+  }
+
+  .btn-primary {
+    background: linear-gradient(to right, rgb(14 165 233), rgb(165 47 255), rgb(2 132 199));
+    box-shadow: 0 40px 90px -40px rgba(15, 23, 42, 0.35);
+    @apply text-white 
+           hover:shadow-[0_25px_45px_-30px_rgba(56,189,248,0.65)] hover:translate-y-[-1px];
+  }
+
+  .btn-secondary {
+    backdrop-filter: blur(20px);
+    @apply bg-neutral-900/60 border border-white/10 text-gray-100 
+           hover:border-primary-400/60 hover:text-primary-100;
+  }
+
+  .btn-ghost {
+    @apply text-gray-300 hover:text-primary-200 transition-colors;
+  }
+
+  .card {
+    box-shadow: 0 40px 90px -40px rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(20px);
+    @apply relative bg-white/5 dark:bg-white/5 border border-white/10 rounded-3xl p-8 
+           hover:shadow-[0_35px_75px_-45px_rgba(14,165,233,0.65)] 
+           transition-all duration-500 text-gray-100;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: linear-gradient(140deg, rgba(14,165,233,0.08), rgba(99,102,241,0.03));
+    pointer-events: none;
+  }
+
+  .container-custom {
+    @apply max-w-8xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass-panel {
+    box-shadow: 0 40px 90px -40px rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(20px);
+    @apply bg-white/5 dark:bg-neutral-900/40 border border-white/10 rounded-4xl;
+  }
+
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(120deg, rgba(14,165,233,0.35), rgba(165,47,255,0.35));
+    padding: 1px;
+    border-radius: 1.5rem;
+  }
+
+  .gradient-border > * {
+    border-radius: inherit;
+    background: rgba(2, 6, 23, 0.65);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .grid-background {
+    background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .hero-orb {
+    @apply absolute rounded-full opacity-80 blur-3xl mix-blend-screen;
+  }
+}
+

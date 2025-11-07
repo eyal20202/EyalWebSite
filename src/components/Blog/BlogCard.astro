@@ -1,0 +1,100 @@
+---
+interface Props {
+  post: {
+    data: {
+      title: string;
+      description: string;
+      date: Date;
+      tags: string[];
+      image?: string;
+      readingTime?: number;
+    };
+    slug: string;
+  };
+}
+
+const { post } = Astro.props;
+const formattedDate = new Intl.DateTimeFormat('he-IL', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(post.data.date);
+const primaryTag = post.data.tags[0] ?? 'Tech Insights';
+---
+
+<a
+  href={`/blog/${post.slug}`}
+  class="card block hover:scale-[1.02] transition-all duration-300 group overflow-hidden relative"
+>
+  {post.data.image && (
+    <div class="relative overflow-hidden rounded-t-2xl mb-6 -mx-6 -mt-6">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+      <img
+        src={post.data.image}
+        alt={post.data.title}
+        class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+        loading="lazy"
+      />
+      <div class="absolute bottom-4 right-4 z-20 flex items-center gap-2">
+        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white/20 backdrop-blur-md text-white border border-white/30">
+          {formattedDate}
+        </span>
+        {post.data.readingTime && (
+          <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-primary-500/80 backdrop-blur-md text-white">
+            {post.data.readingTime} דק׳
+          </span>
+        )}
+      </div>
+    </div>
+  )}
+  <div class="space-y-4">
+    <div class="flex items-start justify-between gap-4">
+      <h2 class="text-2xl font-bold text-white leading-tight group-hover:text-primary-300 transition-colors">
+        {post.data.title}
+      </h2>
+      {!post.data.image && post.data.readingTime && (
+        <span class="flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium bg-primary-500/20 text-primary-200 border border-primary-500/30">
+          {post.data.readingTime} דק׳
+        </span>
+      )}
+    </div>
+    <p class="text-gray-300 leading-relaxed line-clamp-3 text-base">
+      {post.data.description}
+    </p>
+    <div class="flex items-center gap-3 text-sm text-gray-400 pt-2 border-t border-white/10">
+      <div class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <time datetime={post.data.date.toISOString()}>{formattedDate}</time>
+      </div>
+      {primaryTag && (
+        <>
+          <span class="w-1 h-1 rounded-full bg-primary-400"></span>
+          <span class="text-primary-300">{primaryTag}</span>
+        </>
+      )}
+    </div>
+    {post.data.tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 pt-2">
+        {post.data.tags.slice(0, 4).map((tag) => (
+          <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-primary-200 hover:bg-primary-500/20 hover:border-primary-500/30 transition-colors">
+            #{tag}
+          </span>
+        ))}
+        {post.data.tags.length > 4 && (
+          <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-gray-400">
+            +{post.data.tags.length - 4}
+          </span>
+        )}
+      </div>
+    )}
+    <div class="flex items-center gap-2 text-primary-300 text-sm font-medium pt-2 group-hover:gap-3 transition-all">
+      <span>קרא עוד</span>
+      <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </div>
+  </div>
+</a>
+

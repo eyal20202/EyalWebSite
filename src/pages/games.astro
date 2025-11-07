@@ -1,0 +1,43 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import AvatarWithAI from '@components/Avatar/AvatarWithAI';
+import GameModeSelector from '@components/Game/GameModeSelector';
+---
+
+<BaseLayout title="משחקים" description="משחקי טריוויה אינטראקטיביים">
+  <AvatarWithAI client:load size="small" floating={true} context={{ page: 'games' }} />
+
+  <main class="min-h-screen py-12">
+    <div class="container-custom">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">משחקי טריוויה</h1>
+        <p class="text-xl text-gray-300 mb-6 leading-relaxed">
+          בחנו את הידע שלכם בטכנולוגיות, ארכיטקטורות ו-best practices
+        </p>
+        <div class="flex items-center gap-4 text-sm text-gray-400">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>10 שאלות מגוונות</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>15 שניות לשאלה</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span>תוצאות מיידיות</span>
+          </div>
+        </div>
+      </div>
+
+      <GameModeSelector client:only="react" />
+    </div>
+  </main>
+</BaseLayout>
+
