@@ -1,3 +1,9 @@
+# 🌐 אתר חי
+
+[https://eyal-web-site.vercel.app/games](https://eyal-web-site.vercel.app/games)
+
+---
+
 # אתר אישי מתקדם
 
 אתר אישי מודרני בנוי עם Astro, React, Tailwind CSS, AI, ו-WebSockets.
