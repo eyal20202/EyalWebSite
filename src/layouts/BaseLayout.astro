@@ -7,7 +7,12 @@ interface Props {
   image?: string;
 }
 
-const { title, description = 'אתר אישי מתקדם - פורטפוליו, בלוג ומשחקים', image } = Astro.props;
+const defaultSiteTitle = 'EYAL MIZRAHI FULL STACK DEWVELOPER';
+const {
+  title,
+  description = 'אתר אישי מתקדם - פורטפוליו, בלוג ומשחקים',
+  image,
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -26,14 +31,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={title ? `${title} | ${defaultSiteTitle}` : defaultSiteTitle} />
     <meta property="og:description" content={description} />
     {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
+    <meta property="twitter:title" content={title ? `${title} | ${defaultSiteTitle}` : defaultSiteTitle} />
     <meta property="twitter:description" content={description} />
     {image && <meta property="twitter:image" content={new URL(image, Astro.site)} />}
     
@@ -42,7 +47,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet" />
     
-    <title>{title}</title>
+    <title>{title ? `${title} | ${defaultSiteTitle}` : defaultSiteTitle}</title>
   </head>
   <body>
     <header class="sticky top-0 z-50 glass-panel border-b border-white/10 shadow-lg">

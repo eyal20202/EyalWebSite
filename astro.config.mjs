@@ -1,10 +1,14 @@
 import { defineConfig } from 'astro/config';
+import node from '@astrojs/node';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
+  adapter: node({
+    mode: 'standalone',
+  }),
   integrations: [
     react(),
     tailwind({
@@ -12,9 +16,8 @@ export default defineConfig({
     }),
     mdx(),
   ],
-  output: 'static',
+  output: 'hybrid',
   site: 'https://yourwebsite.com',
-  base: '/EyalWebSite',
   server: {
     port: 4321,
   },
