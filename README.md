@@ -1,6 +1,6 @@
 # 🌐 אתר חי
 
-[https://eyal-web-site.vercel.app/games](https://eyal-web-site.vercel.app/games)
+[https://eyal-web-site.vercel.app/](https://eyal-web-site.vercel.app/)
 
 ---
 
