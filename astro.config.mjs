@@ -6,7 +6,9 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: vercel(),
+  adapter: vercel({
+    runtime: 'nodejs20.x',
+  }),
   integrations: [
     react(),
     tailwind({
