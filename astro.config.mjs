@@ -1,14 +1,12 @@
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel/serverless';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: vercel(),
   integrations: [
     react(),
     tailwind({
@@ -16,7 +14,7 @@ export default defineConfig({
     }),
     mdx(),
   ],
-  output: 'hybrid',
+  output: 'server',
   site: 'https://yourwebsite.com',
   server: {
     port: 4321,
