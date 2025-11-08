@@ -14,6 +14,7 @@ export default defineConfig({
   ],
   output: 'static',
   site: 'https://yourwebsite.com',
+  base: '/EyalWebSite',
   server: {
     port: 4321,
   },
