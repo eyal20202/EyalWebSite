@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>הבלוג שלי</title>
+    <description>בלוג על טכנולוגיה, פיתוח, ופרויקטים</description>
+    <link>https://yourwebsite.com/</link>
+    <atom:link href="https://yourwebsite.com//rss.xml" rel="self" type="application/rss+xml"/>
+    <language>he-IL</language>
+    <lastBuildDate>Fri, 07 Nov 2025 18:51:48 GMT</lastBuildDate>
+        <item>
+      <title>CI/CD בלי הפתעות: איך צמצמתי דיפלויים מ-45 ל-7 דקות</title>
+      <description>מתודולוגיה, כלים ודגשים לשרשרת DevOps אמינה ב-Java, Node.js ו-React.</description>
+      <link>https://yourwebsite.com//blog/example-post-2</link>
+      <guid>https://yourwebsite.com//blog/example-post-2</guid>
+      <pubDate>Tue, 02 Apr 2024 00:00:00 GMT</pubDate>
+      <category>DevOps</category>
+      <category>CI/CD</category>
+      <category>Kubernetes</category>
+      <category>Jenkins</category>
+    </item>
+    <item>
+      <title>איך העברנו מונוליט למיקרו־שירותים בלי לעצור את הייצור</title>
+      <description>לקחים פרקטיים ממעבר אמיתי במערכות פיננסיות – תכנון, תקשורת ומדדי הצלחה.</description>
+      <link>https://yourwebsite.com//blog/example-post-1</link>
+      <guid>https://yourwebsite.com//blog/example-post-1</guid>
+      <pubDate>Tue, 12 Mar 2024 00:00:00 GMT</pubDate>
+      <category>Microservices</category>
+      <category>Architecture</category>
+      <category>DevOps</category>
+      <category>Kafka</category>
+    </item>
+  </channel>
+</rss>
